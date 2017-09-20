@@ -1,0 +1,27 @@
+name: dl
+channels:
+- menpo
+- conda-forge
+- defaults
+dependencies:
+- python=3.6
+- numpy
+- scipy
+- pandas
+- jupyter
+- pillow
+- tensorflow
+- nltk
+- keras
+- scikit-image
+- scikit-learn
+- seaborn
+- bokeh
+- opencv3
+- flask
+- flask-socketio
+- pip:
+  - coverage
+  - coveralls
+  - codecov
+  - pytest
