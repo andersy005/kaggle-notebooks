@@ -16,6 +16,7 @@ def base_mlp(input_dim, nb_classes, loss, optimizer='adam',
     model.compile(optimizer=optimizer,
                   loss=loss,
                   metrics=metrics)
+    print(model.summary())
     return model
 
 
@@ -34,4 +35,5 @@ def base_cnn(input_shape, nb_classes, loss='categorical_crossentropy', optimizer
     model.compile(optimizer=optimizer,
                   loss=loss,
                   metrics=metrics)
+    print(model.summary())
     return model
