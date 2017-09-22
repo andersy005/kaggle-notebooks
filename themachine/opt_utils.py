@@ -4,6 +4,8 @@ import time
 import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.style.use('seaborn')
+from sklearn.metrics import confusion_matrix
+import pandas as pd
 
 
 
@@ -60,3 +62,36 @@ def plot_history(history):
     plt.ylabel('Loss')
     plt.legend()
     plt.show()
+
+
+
+
+def print_confusion_matrix(model, x_test, y_test, num_classes):
+
+    # Get the predicted classifications for the test-set
+    cls_pred = model.predict_classes(x_test)
+
+    # Get the confusion matrix using sklearn
+    cm = confusion_matrix(y_true=y_test,
+                          y_pred=cls_pred)
+
+    # Print the confusion matrix as text
+    print("\n\n")
+    print(cm)
+
+    # Plot the confusion matrix.
+    plt.imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
+
+    # Make various adjustments to the plot.
+    plt.tight_layout()
+    plt.colorbar()
+    tick_marks = np.arange(num_classes)
+    plt.xticks(tick_marks, range(num_classes))
+    plt.yticks(tick_marks, range(num_classes))
+    plt.xlabel('Predicted')
+    plt.ylabel('True')
+    plt.show()
+
+
+def create_submissions(model, x_test, filename):
+    predictions = model.predict_classes(x_test, verbose=0)
